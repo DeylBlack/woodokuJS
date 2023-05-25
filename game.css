@@ -39,7 +39,7 @@
 }
 
 .game-board .cell:nth-child(even) {
-    background: red;
+    background: green;
 }
 
 .game-board div {
@@ -57,7 +57,7 @@
     grid-template-columns: repeat(2, 60px);
 }
 
-.next-figures .figure-big {
+.next-figures .figure.big {
     display: grid;
     grid-template-columns: repeat(3, 60px);
 }
