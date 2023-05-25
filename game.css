@@ -1,0 +1,70 @@
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.game-info {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.game-info .timer {
+    display: flex;
+    gap: 10px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /*width: 50%;*/
+    /*height: 50%;*/
+    /*border: 2px solid red;*/
+}
+
+.game-board .cell {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.game-board .cell:nth-child(even) {
+    background: red;
+}
+
+.game-board div {
+    border: 1px solid;
+    width: 60px;
+    height: 60px;
+}
+
+.game-board .cell div:nth-child(3n) {
+    /*border-right: 2px solid red;*/
+}
+
+.next-figures .figure {
+    display: grid;
+    grid-template-columns: repeat(2, 60px);
+}
+
+.next-figures .figure-big {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+}
+
+.next-figures {
+    /*background: red;*/
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
