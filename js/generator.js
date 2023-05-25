@@ -49,7 +49,14 @@ function generateCanvas3x2() {
     const removableFirst = getRandomInt(6);
     const removableSecond = getRandomInt(6);
 
-    if (Math.abs((removableFirst - removableSecond)) !== 1) {
+    console.log(removableFirst, removableSecond)
+
+    if ((Math.abs((removableFirst - removableSecond)) !== 1) && Math.abs((removableFirst - removableSecond)) !== 3) {
+
+        if (removableFirst === removableSecond || Math.abs((removableFirst - removableSecond)) === 3) {
+            figure.children[0].style.background = 'transparent'
+            figure.children[1].style.background = 'transparent'
+        }
         figure.children[removableFirst].style.background = 'transparent'
         figure.children[removableSecond].style.background = 'transparent'
     }
@@ -90,6 +97,17 @@ function generateCanvas3x3() {
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
+}
+
+function getCoords(elem) {
+    let box = elem.getBoundingClientRect();
+
+    return {
+        top: box.top + window.pageYOffset,
+        right: box.right + window.pageXOffset,
+        bottom: box.bottom + window.pageYOffset,
+        left: box.left + window.pageXOffset
+    };
 }
 
 const figuresList = document.getElementById('figures');

@@ -1,6 +1,5 @@
 let figures = document.querySelectorAll('.figure');
 
-console.log(figures)
 figures.forEach(figure => {
     move(figure)
 })
@@ -22,6 +21,7 @@ function move(figure) {
         moveAt(event.pageX, event.pageY);
 
         function onMouseMove(event) {
+            console.log(event, 'ev move')
             moveAt(event.pageX, event.pageY);
         }
 
