@@ -25,8 +25,8 @@
 .game-board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /*width: 50%;*/
-    /*height: 50%;*/
+    width: 500px;
+    height: 500px;
     /*border: 2px solid red;*/
 }
 
@@ -54,12 +54,12 @@
 
 .next-figures .figure {
     display: grid;
-    grid-template-columns: repeat(2, 60px);
+    /*grid-template-columns: repeat(2, 60px);*/
 }
 
 .next-figures .figure.big {
     display: grid;
-    grid-template-columns: repeat(3, 60px);
+    /*grid-template-columns: repeat(3, 60px);*/
 }
 
 .next-figures {
