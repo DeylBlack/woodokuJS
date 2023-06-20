@@ -1,15 +1,19 @@
 let figures = document.querySelectorAll('.figure');
 
 figures.forEach(figure => {
-    move(figure)
+    move(figure);
 })
 
 function move(figure) {
     figure.onmousedown = function(event) {
+        if (figure.className === 'setted') {
+            return;
+        }
+
         figure.style.position = 'absolute';
         figure.style.zIndex = 1000;
         figure.style.display = 'grid';
-        figure.style.gridTemplateColumns = '60px 60px';
+        figure.style.gridTemplateColumns = figure.className.includes('big') ? 'repeat(3, 60px);' : 'repeat(2, 60px);';
 
         document.body.append(figure);
 
@@ -21,18 +25,31 @@ function move(figure) {
         moveAt(event.pageX, event.pageY);
 
         function onMouseMove(event) {
-            console.log(event, 'ev move')
+            const currentPosition = {
+                clientY: event.clientY,
+                clientX: event.clientX
+            };
+            if (isInsideBoard(boardInformation.coordinates, currentPosition)) {
+                // console.log(event, 'ev move')
+            }
             moveAt(event.pageX, event.pageY);
         }
 
         document.addEventListener('mousemove', onMouseMove);
 
-        figure.onmouseup = function() {
-            document.removeEventListener('mousemove', onMouseMove);
-            figure.onmouseup = null;
-            figure.className = 'setted'
+        figure.onmouseup = function(event) {
+            console.log(event)
 
-            if (figuresList.children.length < 3) {
+            const currentPosition = {
+                clientY: event.clientY,
+                clientX: event.clientX
+            };
+
+            document.removeEventListener('mousemove', onMouseMove);
+
+            if (figuresList.children.length < 3 && isInsideBoard(boardInformation.coordinates, currentPosition)) {
+                figure.onmouseup = null;
+                figure.className = 'setted';
                 generateCanvas2x2();
 
                 figures = document.querySelectorAll('.figure');
@@ -40,7 +57,10 @@ function move(figure) {
                 figures.forEach((figure) => {
                     move(figure)
                 })
-                console.log(figures)
+            } else {
+                figure.style.top = '50px';
+                figure.style.position = 'absolute';
+                figure.style.left = '50px';
             }
 
         };
